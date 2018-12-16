@@ -140,10 +140,11 @@ class Node {
 		this.rawEvent = rawEvent;
 		this.key = key;
 		this.ID = makeID(rawEvent, key);
+		this.ParentID = 
 
 	}
 
-	private String hash(String rawEvent, int key) { // Take's two strings a rawEvent and a key, key is useful in
+	private String makeHash(String rawEvent, int key) { // Take's two strings a rawEvent and a key, key is useful in
 														// reverse lookup for parent
 		String hash = rawEvent.toLowerCase().replace('g', 'b').replace('y', 'p').replace('n', 's');
 		try {
@@ -175,7 +176,7 @@ class Node {
 
 	private String makeID(String rawEvent, int key) {
 		key = getParentKey(key); //key now has the parent's key which we can use to get the parents id
-		String myID = hash(rawEvent,key);		
+		String myID = makeHash(rawEvent,key);		
 		return myID;
 	}
 }
