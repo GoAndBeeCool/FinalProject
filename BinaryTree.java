@@ -77,10 +77,21 @@ public class BinaryTree {
 
 	void printGivenLevel(Node root, int level) {
 		if (root == null)
+		{
 			return;
+		}
 		if (level == 1)
-			System.out.print("Raw event: " + " " + root.rawEvent + " " + "ID: " + " " + root.ID + " " + "Parent ID: "
-					+ " " + root.ParentID + " ");
+  		{
+            		System.out.print("Raw event: " + " " + root.rawEvent + "\n");
+            		System.out.print("ID: "+ root.ID + "\n");
+            		System.out.print("Parent ID: " + root.ParentID + "\n");
+        	}
+            
+        else if (level > 1) 
+        { 
+            printGivenLevel(root.left, level-1); 
+            printGivenLevel(root.right, level-1); 
+        } 
 		else if (level > 1) {
 			printGivenLevel(root.left, level - 1);
 			printGivenLevel(root.right, level - 1);
