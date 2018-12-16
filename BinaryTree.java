@@ -101,7 +101,7 @@ public class BinaryTree {
 
 		for (int i = 0; i < 6; i++) {
 
-			System.out.println("Enter a raw event");
+			System.out.println("\nEnter a raw event");
 			eventName = sc.nextLine();
 
 			if (eventName.equals("exit")) {
