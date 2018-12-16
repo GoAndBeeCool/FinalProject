@@ -140,8 +140,11 @@ class Node {
 		this.rawEvent = rawEvent;
 		this.key = key;
 		this.ID = makeID(rawEvent, key);
-		this.ParentID = 
-
+		this.ParentID = getParentID(key);
+	}
+	
+	private String getParentID(int key) {
+		int parentKey = getParentKey(key);
 	}
 
 	private String makeHash(String rawEvent, int key) { // Take's two strings a rawEvent and a key, key is useful in
