@@ -2,17 +2,17 @@ import java.util.Scanner;
 
 public class BinaryTree {
 
-	public static Node root;
+	public static Node root; //thr root of a tree
 	
-	public void addNode(int key, String rawEvent) {
+	public void addNode(int key, String rawEvent) { //adding a new node to the tree.
 
 		Node newNode = new Node(key, rawEvent);		
 
-		if (root == null) {
+		if (root == null) { //if the root is nothing
 
-			root = newNode;			
+			root = newNode;			//new node is the root
 		} else {
-			Node currentNode = root;
+			Node currentNode = root; //otherwise current one is the root
 
 			Node parent;
 
@@ -98,7 +98,7 @@ public class BinaryTree {
 		String eventName;
 		Scanner sc = new Scanner(System.in);
 
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < perfectTree.length; i++) {
 
 			System.out.println("\nEnter a raw event");
 			eventName = sc.nextLine();
