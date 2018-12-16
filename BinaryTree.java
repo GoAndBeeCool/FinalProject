@@ -3,20 +3,15 @@ import java.util.Scanner;
 
 public class BinaryTree {
 
-	Node root;
-
-	public void updateTree(int key) {
-
-	}
-
+	public static Node root;
+	
 	public void addNode(int key, String rawEvent) {
 
-		Node newNode = new Node(key, rawEvent);
-		newNode.ID = rawEvent;
+		Node newNode = new Node(key, rawEvent);		
 
 		if (root == null) {
 
-			root = newNode;
+			root = newNode;			
 		} else {
 			Node currentNode = root;
 
@@ -136,15 +131,50 @@ class Node {
 	Node right;
 
 	Node(int key, String rawEvent) {
-
 		this.rawEvent = rawEvent;
 		this.key = key;
 		this.ID = makeID(rawEvent, key);
 		this.ParentID = getParentID(key);
 	}
 	
+	public Node getParent(int key) {			
+		if (key == 5000) {
+			return BinaryTree.root;
+		} else {
+			Node currentNode = BinaryTree.root;
+
+			Node parent;
+
+			while (true) {
+				
+				parent = currentNode;
+
+				if (key < currentNode.key) {
+					// Build Left Node
+
+					currentNode = currentNode.left;
+					// String ParentID = currentNode.ParentID;
+
+					if (currentNode == null) {						
+						return parent;
+					}
+
+				} else {
+
+					currentNode = currentNode.right;
+
+					if (currentNode == null) {
+						return parent;
+					}
+
+				}
+
+			}
+		}
+	}
+	
 	private String getParentID(int key) {
-		int parentKey = getParentKey(key);
+		return getParent(key).ID;
 	}
 
 	private String makeHash(String rawEvent, int key) { // Take's two strings a rawEvent and a key, key is useful in
@@ -162,19 +192,8 @@ class Node {
 		return hash;
 	}
 
-	private int getParentKey(int key) {
-		int[] perfectTree = new int[] {5000,4000,7000,3500,4500,6500,7500,3400,3600,4400,4600,6400,6600,7400,7600,3300,3450,3550,3650,4350,4450,4550,4650,6350,6450,6550,6650,6350,7450,7550,7650};
-		if (key == 5000) {
-			key = (int) Math.random();
-		} else {
-			for (int i : perfectTree) {
-				if (perfectTree[i] == key) {
-					key = perfectTree[i - 1];
-					break;
-				}
-			}
-		}
-		return key;
+	private int getParentKey(int key) {		
+		return getParent(key).key;
 	}
 
 	private String makeID(String rawEvent, int key) {
