@@ -135,7 +135,22 @@ class Node {
 		this.ID = makeID(rawEvent, key);
 		this.ParentID = getParentID(key);
 	}
-	
+
+	private String makeHash(String rawEvent, int key) { // Take's two strings a rawEvent and a key, key is useful in
+														// reverse lookup for parent
+		String hash = rawEvent.toLowerCase().replace('g', 'b').replace('y', 'p').replace('n', 's');
+		try {
+			hash = hash.substring(0, 3);
+		} catch (Exception a) {
+		}
+		; // Makes it 4 or less than 4 in fail case
+		while (hash.length() < 4) { // Makes it exactly 4 by adding w's
+			hash = hash.concat("w");
+		}
+		hash = hash.concat(String.valueOf(key));
+		return hash;
+	}
+
 	public Node getParent(int key) {			
 		if (key == 5000) {
 			return null;
@@ -173,24 +188,12 @@ class Node {
 	}
 	
 	private String getParentID(int key) {
+		if(getParent(key) == null) {
+			return "00005000";
+		}
 		return getParent(key).ID;
 	}
-
-	private String makeHash(String rawEvent, int key) { // Take's two strings a rawEvent and a key, key is useful in
-														// reverse lookup for parent
-		String hash = rawEvent.toLowerCase().replace('g', 'b').replace('y', 'p').replace('n', 's');
-		try {
-			hash = hash.substring(0, 3);
-		} catch (Exception a) {
-		}
-		; // Makes it 4 or less than 4 in fail case
-		while (hash.length() < 4) { // Makes it exactly 4 by adding w's
-			hash = hash.concat("w");
-		}
-		hash = hash.concat(String.valueOf(key));
-		return hash;
-	}
-
+	
 	private int getParentKey(int key) {
 		if(getParent(key) == null) {
 			return 5000;
