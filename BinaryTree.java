@@ -91,7 +91,7 @@ public class BinaryTree {
 		
 	public void askForRawEvent() {
 		
-		int[] perfectTree = new int[] {100,50,200,25,75,150,250,10,30,60,80,125,175,225,275,4,15,27,35,55,65,77,85,120,130,170,180,220,230,270,280};
+		int[] perfectTree = new int[] {100,050,200,025,075,150,250,010,030,60,80,125,175,225,275,4,15,27,35,55,65,77,85,120,130,170,180,220,230,270,280};
 		String eventName;
 		Scanner sc = new Scanner(System.in);
 		
@@ -130,13 +130,23 @@ class Node {
 		
 		this.rawEvent = rawEvent;
 		this.key = key;
-		this.ID = makeID(rawEvent);
+		this.ID = makeID(rawEvent,key);
 		
 	}
 	
-	private String makeID(String rawEvent){		
-		String id = rawEvent;
-		try{id = rawEvent.substring(0, 7);}catch(Exception a) {};		
+	private String hash(String rawEvent, String key) { //Take's two strings a rawEvent and a key, key is useful in reverse lookup for parent
+		String hash = rawEvent.toLowerCase().replace('g', 'b').replace('y', 'p').replace('n', 's');			
+		try{hash = hash.substring(0, 3);}catch(Exception a) {}; //Makes it 4 or less than 4 in fail case
+		while(hash.length() < 4) { //Makes it exactly 4 by adding w's
+			hash = hash.concat("w");
+		}
+		hash = hash.concat(key);
+		return hash;
+	}
+	
+	private String makeID(String rawEvent, int key){		
+		String id = 
+		
 		return id;
 	}
 }
