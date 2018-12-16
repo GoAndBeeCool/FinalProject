@@ -4,6 +4,10 @@ public class BinaryTree {
 	
 	Node root;
 	
+	public void updateTree(int key) {
+		
+	}
+	
 	public void addNode(int key, String rawEvent) {
 		
 		Node newNode = new Node(key, rawEvent);
@@ -11,8 +15,7 @@ public class BinaryTree {
 		
 		if(root == null) {
 			
-			root = newNode;
-			
+			root = newNode;			
 		}
 		else {
 			Node currentNode = root;
@@ -24,7 +27,7 @@ public class BinaryTree {
 				parent  = currentNode;
 				
 				if(key < currentNode.key) {
-					
+					//Build Left Node
 					
 					currentNode = currentNode.left;
 					//String ParentID = currentNode.ParentID;
@@ -85,12 +88,7 @@ public class BinaryTree {
             printGivenLevel(root.right, level-1); 
         } 
     } 
-	
-
-	
-	
-	
-	
+		
 	public void askForRawEvent() {
 		
 		int[] perfectTree = new int[] {100,50,200,25,75,150,250,10,30,60,80,125,175,225,275,4,15,27,35,55,65,77,85,120,130,170,180,220,230,270,280};
@@ -98,7 +96,6 @@ public class BinaryTree {
 		Scanner sc = new Scanner(System.in);
 		
 		for(int i = 0;i < 6;i++) {
-
 			
 			System.out.println("Enter a raw event");
 			eventName = sc.nextLine();
@@ -112,17 +109,9 @@ public class BinaryTree {
 				addNode(perfectTree[i], eventName);
 				
 			}
-
-
-		}
-		
-		
-		
+		}		
 	}
 }
-
-
-
 
 class Node {
 	int key;
@@ -141,7 +130,13 @@ class Node {
 		
 		this.rawEvent = rawEvent;
 		this.key = key;
+		this.ID = makeID(rawEvent);
 		
 	}
 	
+	private String makeID(String rawEvent){		
+		String id = rawEvent;
+		try{id = rawEvent.substring(0, 7);}catch(Exception a) {};		
+		return id;
+	}
 }
