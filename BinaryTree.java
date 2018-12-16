@@ -1,4 +1,3 @@
-import java.util.List;
 import java.util.Scanner;
 
 public class BinaryTree {
@@ -139,7 +138,7 @@ class Node {
 	
 	public Node getParent(int key) {			
 		if (key == 5000) {
-			return BinaryTree.root;
+			return null;
 		} else {
 			Node currentNode = BinaryTree.root;
 
@@ -192,7 +191,10 @@ class Node {
 		return hash;
 	}
 
-	private int getParentKey(int key) {		
+	private int getParentKey(int key) {
+		if(getParent(key) == null) {
+			return 5000;
+		}
 		return getParent(key).key;
 	}
 
