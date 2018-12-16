@@ -151,7 +151,7 @@ class Node {
 		return hash;
 	}
 
-	public Node getParent(int key) {			
+	public Node getParent(int key) {		 //Get's the parent of a node given a key, returns null if the key belongs to root	
 		if (key == 5000) {
 			return null;
 		} else {
