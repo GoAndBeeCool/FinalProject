@@ -92,7 +92,7 @@ public class BinaryTree {
 		}
 	}
 
-	public void askForRawEvent() {
+	public void askForRawEvent() { //mke a full tree by numbers index
 
 		int[] perfectTree = new int[] {5000,4000,7000,3500,4500,6500,7500,3400,3600,4400,4600,6400,6600,7400,7600,3300,3450,3550,3650,4350,4450,4550,4650,6350,6450,6550,6650,6350,7450,7550,7650};
 		String eventName;
